@@ -2637,6 +2637,20 @@ section {
     color: rgba(255, 255, 255, 0.6);
 }
 
+.footer-bottom p {
+    margin: 0.3rem 0;
+}
+
+.footer-bottom a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-bottom a:hover {
+    color: var(--primary-color);
+}
+
 /* Animations */
 @keyframes fadeInUp {
     from {
