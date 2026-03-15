@@ -44,84 +44,134 @@ navLinks.forEach(link => {
     });
 });
 
-// Memories Slider
-const sliderTrack = document.getElementById('sliderTrack');
-const slides = document.querySelectorAll('.slide');
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
-let currentSlide = 0;
-const totalSlides = slides.length;
+// Memories Category Gallery - Initialize after DOM is ready
+let categoryButtons, memoryGalleries;
 
-// Clone first and last slides for infinite loop
-const firstClone = slides[0].cloneNode(true);
-const lastClone = slides[totalSlides - 1].cloneNode(true);
-sliderTrack.appendChild(firstClone);
-sliderTrack.insertBefore(lastClone, slides[0]);
+const initMemoryGallerySelectors = () => {
+    categoryButtons = document.querySelectorAll('.category-btn');
+    memoryGalleries = document.querySelectorAll('.memory-gallery');
+};
 
-// Update slider position
-function updateSlider() {
-    sliderTrack.style.transform = `translateX(-${(currentSlide + 1) * 100}%)`;
-}
-
-// Next slide
-function nextSlide() {
-    currentSlide++;
-    updateSlider();
+// Initialize - show the gallery that has active class in HTML, or first one by default
+const initializeMemoryGallery = () => {
+    // Initialize selectors first
+    initMemoryGallerySelectors();
     
-    if (currentSlide >= totalSlides) {
-        setTimeout(() => {
-            currentSlide = 0;
-            sliderTrack.style.transition = 'none';
-            updateSlider();
-            setTimeout(() => {
-                sliderTrack.style.transition = 'transform 0.5s ease';
-            }, 50);
-        }, 500);
+    if (!categoryButtons || !memoryGalleries || categoryButtons.length === 0 || memoryGalleries.length === 0) {
+        return;
     }
-}
-
-// Previous slide
-function prevSlide() {
-    currentSlide--;
-    updateSlider();
     
-    if (currentSlide < 0) {
-        setTimeout(() => {
-            currentSlide = totalSlides - 1;
-            sliderTrack.style.transition = 'none';
-            updateSlider();
-            setTimeout(() => {
-                sliderTrack.style.transition = 'transform 0.5s ease';
-            }, 50);
-        }, 500);
+    // Find which button is already active (from HTML)
+    let activeButton = Array.from(categoryButtons).find(btn => btn.classList.contains('active'));
+    let activeGallery = Array.from(memoryGalleries).find(gallery => gallery.classList.contains('active'));
+    
+    // If no active button/gallery found, use first one
+    if (!activeButton && categoryButtons.length > 0) {
+        activeButton = categoryButtons[0];
+        activeButton.classList.add('active');
     }
+    
+    if (!activeGallery && memoryGalleries.length > 0) {
+        // Get the gallery ID from the active button
+        if (activeButton) {
+            const targetCategory = activeButton.getAttribute('data-category');
+            activeGallery = document.getElementById(targetCategory);
+        }
+        
+        // Fallback to first gallery if still not found
+        if (!activeGallery) {
+            activeGallery = memoryGalleries[0];
+        }
+        
+        // Remove active from all galleries first
+        memoryGalleries.forEach(gallery => gallery.classList.remove('active'));
+        
+        // Set the correct gallery as active
+        if (activeGallery) {
+            activeGallery.classList.add('active');
+        }
+    }
+    
+    // Ensure only the active gallery is visible
+    memoryGalleries.forEach(gallery => {
+        if (!gallery.classList.contains('active')) {
+            gallery.classList.remove('active');
+        }
+    });
+    
+    // Set up event listeners for category switching
+    setupCategorySwitching();
+};
+
+// Set up category switching functionality
+const setupCategorySwitching = () => {
+    if (!categoryButtons || !memoryGalleries) return;
+    
+    categoryButtons.forEach(button => {
+        // Remove any existing listeners by cloning
+        const newButton = button.cloneNode(true);
+        button.parentNode.replaceChild(newButton, button);
+        
+        newButton.addEventListener('click', () => {
+            const targetCategory = newButton.getAttribute('data-category');
+            
+            // Remove active class from all buttons and galleries
+            categoryButtons.forEach(btn => btn.classList.remove('active'));
+            memoryGalleries.forEach(gallery => gallery.classList.remove('active'));
+            
+            // Add active class to clicked button and corresponding gallery
+            newButton.classList.add('active');
+            const targetGallery = document.getElementById(targetCategory);
+            if (targetGallery) {
+                targetGallery.classList.add('active');
+                // Re-process Instagram embeds when a new gallery is shown
+                if (window.instgrm && window.instgrm.Embeds) {
+                    setTimeout(() => {
+                        window.instgrm.Embeds.process();
+                    }, 100);
+                }
+            }
+        });
+    });
+};
+
+// Initialize on page load - run after DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeMemoryGallery);
+} else {
+    initializeMemoryGallery();
 }
 
-// Button events
-nextBtn.addEventListener('click', nextSlide);
-prevBtn.addEventListener('click', prevSlide);
+// Load Instagram embeds on page load - only for the active gallery
+const loadActiveGalleryEmbeds = () => {
+    if (!memoryGalleries || !window.instgrm || !window.instgrm.Embeds) return;
+    
+    const activeGallery = Array.from(memoryGalleries).find(gallery => gallery.classList.contains('active'));
+    if (activeGallery) {
+        const activeEmbeds = activeGallery.querySelectorAll('.instagram-media');
+        if (activeEmbeds.length > 0) {
+            window.instgrm.Embeds.process();
+        }
+    }
+};
 
-// Auto-slide every 2.5 seconds
-let autoSlideInterval = setInterval(nextSlide, 2500);
-
-// Pause auto-slide on hover
-const sliderContainer = document.querySelector('.slider-container');
-sliderContainer.addEventListener('mouseenter', () => {
-    clearInterval(autoSlideInterval);
-});
-
-sliderContainer.addEventListener('mouseleave', () => {
-    autoSlideInterval = setInterval(nextSlide, 2500);
-});
-
-// Initialize slider
-updateSlider();
-setTimeout(() => {
-    sliderTrack.style.transition = 'transform 0.5s ease';
-}, 50);
+// Initialize Instagram embeds after page loads
+if (window.instgrm) {
+    // Try multiple times in case Instagram script loads later
+    setTimeout(loadActiveGalleryEmbeds, 500);
+    setTimeout(loadActiveGalleryEmbeds, 1000);
+    setTimeout(loadActiveGalleryEmbeds, 2000);
+} else {
+    // Wait for Instagram script to load
+    window.addEventListener('load', () => {
+        setTimeout(loadActiveGalleryEmbeds, 500);
+        setTimeout(loadActiveGalleryEmbeds, 1000);
+        setTimeout(loadActiveGalleryEmbeds, 2000);
+    });
+}
 
 // Scroll reveal animation
-const revealElements = document.querySelectorAll('.student-card, .course-card, .achievement-item');
+const revealElements = document.querySelectorAll('.student-card, .course-card, .achievement-item, .gallery-item');
 
 const revealOnScroll = () => {
     revealElements.forEach(element => {
@@ -268,40 +318,111 @@ const animateCounter = (element, target, duration = 2000) => {
     }, 16);
 };
 
-// Observe statistics section for counter animation
-const statsSection = document.querySelector('.achievements-stats');
-const achievementStats = document.querySelectorAll('.achievement-stat .stat-number');
-
-const observerOptions = {
-    threshold: 0.5,
-    rootMargin: '0px'
+// Testimonials Slider
+let testimonialsSliderInitialized = false;
+const testimonialsSlider = () => {
+    // Prevent multiple initializations
+    if (testimonialsSliderInitialized) return;
+    
+    const slider = document.querySelector('.testimonials-slider');
+    const cards = document.querySelectorAll('.testimonial-card');
+    const dotsContainer = document.querySelector('.slider-dots');
+    
+    if (!slider || !cards.length) return;
+    
+    testimonialsSliderInitialized = true;
+    
+    let currentIndex = 0;
+    let autoSlideInterval;
+    
+    // Create navigation dots
+    cards.forEach((_, index) => {
+        const dot = document.createElement('button');
+        dot.classList.add('slider-dot');
+        if (index === 0) dot.classList.add('active');
+        dot.setAttribute('aria-label', `Go to testimonial ${index + 1}`);
+        dot.addEventListener('click', () => goToSlide(index));
+        dotsContainer.appendChild(dot);
+    });
+    
+    const dots = document.querySelectorAll('.slider-dot');
+    
+    // Show specific slide
+    const goToSlide = (index) => {
+        // Remove active class from all cards and dots
+        cards.forEach(card => card.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+        
+        // Add active class to current card and dot
+        cards[index].classList.add('active');
+        dots[index].classList.add('active');
+        
+        currentIndex = index;
+    };
+    
+    // Auto slide function
+    const autoSlide = () => {
+        currentIndex = (currentIndex + 1) % cards.length;
+        goToSlide(currentIndex);
+    };
+    
+    // Start auto sliding (every 8 seconds = 8000ms - gives time to read)
+    const startAutoSlide = () => {
+        // Clear any existing interval first
+        if (autoSlideInterval) {
+            clearInterval(autoSlideInterval);
+        }
+        autoSlideInterval = setInterval(autoSlide, 8000);
+    };
+    
+    // Stop auto sliding (when user interacts)
+    const stopAutoSlide = () => {
+        if (autoSlideInterval) {
+            clearInterval(autoSlideInterval);
+            autoSlideInterval = null;
+        }
+    };
+    
+    // Resume auto sliding after user interaction
+    const resumeAutoSlide = () => {
+        stopAutoSlide();
+        // Wait 3 seconds before resuming
+        setTimeout(startAutoSlide, 3000);
+    };
+    
+    // Initialize: Show first card
+    goToSlide(0);
+    
+    // Start auto sliding after a short delay (2 seconds)
+    setTimeout(() => {
+        startAutoSlide();
+    }, 2000);
+    
+    // Pause on hover - stay paused while hovering
+    const sliderContainer = document.querySelector('.testimonials-slider-container');
+    if (sliderContainer) {
+        sliderContainer.addEventListener('mouseenter', stopAutoSlide);
+        sliderContainer.addEventListener('mouseleave', () => {
+            // Resume after 2 seconds when mouse leaves
+            setTimeout(startAutoSlide, 2000);
+        });
+    }
+    
+    // Pause on dot click - give user time to read
+    dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+            stopAutoSlide();
+            // Resume after 8 seconds when user clicks a dot
+            setTimeout(startAutoSlide, 8000);
+        });
+    });
 };
 
-if (statsSection) {
-    const statsObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const statNumbers = entry.target.querySelectorAll('.stat-number');
-                statNumbers.forEach(stat => {
-                    const text = stat.textContent;
-                    let number;
-                    
-                    if (text.includes('/')) {
-                        number = parseFloat(text.replace(/[^\d.]/g, ''));
-                    } else {
-                        number = parseInt(text.replace(/\D/g, ''));
-                    }
-                    
-                    if (number && !stat.classList.contains('animated')) {
-                        stat.classList.add('animated');
-                        animateCounter(stat, number);
-                    }
-                });
-            }
-        });
-    }, observerOptions);
-    
-    statsObserver.observe(statsSection);
+// Initialize testimonials slider when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', testimonialsSlider);
+} else {
+    testimonialsSlider();
 }
 
 // Add active class to current navigation link
