@@ -240,17 +240,60 @@ contactForm.addEventListener('submit', async (e) => {
     submitBtn.textContent = 'Sending...';
     
     // Get form values
+    // Get selected courses from checkboxes
+    const courseCheckboxes = document.querySelectorAll('input[name="courses"]:checked');
+    const selectedCourses = Array.from(courseCheckboxes).map(cb => cb.value);
+    
     const formData = {
         name: document.getElementById('name').value.trim(),
         phone: document.getElementById('phone').value.trim(),
         email: document.getElementById('email').value.trim(),
-        subject: document.getElementById('subject').value,
-        message: document.getElementById('message').value.trim()
+        courses: selectedCourses.join(', '), // Join multiple courses with comma
+        parentPhone: document.getElementById('parentPhone').value.trim(),
+        class: document.getElementById('class').value.trim(),
+        school: document.getElementById('school').value.trim(),
+        address: document.getElementById('address').value.trim()
     };
     
+    // Validate phone numbers (exactly 10 digits)
+    const phoneRegex = /^[0-9]{10}$/;
+    if (!phoneRegex.test(formData.phone)) {
+        formMessage.textContent = 'Please enter a valid 10-digit phone number.';
+        formMessage.className = 'form-message error';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message';
+        setTimeout(() => {
+            formMessage.className = 'form-message';
+        }, 5000);
+        return;
+    }
+    
+    if (!phoneRegex.test(formData.parentPhone)) {
+        formMessage.textContent = 'Please enter a valid 10-digit parent phone number.';
+        formMessage.className = 'form-message error';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message';
+        setTimeout(() => {
+            formMessage.className = 'form-message';
+        }, 5000);
+        return;
+    }
+    
     // Validate form
-    if (!formData.name || !formData.phone || !formData.email || !formData.subject || !formData.message) {
-        formMessage.textContent = 'Please fill in all fields.';
+    if (!formData.name || !formData.phone || !formData.email || !formData.courses || !formData.parentPhone || !formData.class || !formData.school || !formData.address) {
+        formMessage.textContent = 'Please fill in all fields and select at least one course.';
+        formMessage.className = 'form-message error';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message';
+        setTimeout(() => {
+            formMessage.className = 'form-message';
+        }, 5000);
+        return;
+    }
+    
+    // Validate at least one course is selected
+    if (selectedCourses.length === 0) {
+        formMessage.textContent = 'Please select at least one course.';
         formMessage.className = 'form-message error';
         submitBtn.disabled = false;
         submitBtn.textContent = 'Send Message';
@@ -423,6 +466,64 @@ if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', testimonialsSlider);
 } else {
     testimonialsSlider();
+}
+
+// Custom Select Dropdown with Checkboxes
+const initCustomSelect = () => {
+    const customSelect = document.getElementById('customSelect');
+    const customSelectTrigger = customSelect?.querySelector('.custom-select-trigger');
+    const customSelectOptions = document.getElementById('customSelectOptions');
+    const customSelectValue = customSelect?.querySelector('.custom-select-value');
+    const checkboxes = customSelectOptions?.querySelectorAll('input[type="checkbox"]');
+    
+    if (!customSelect || !customSelectTrigger || !customSelectOptions) return;
+    
+    // Toggle dropdown
+    customSelectTrigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        customSelect.classList.toggle('active');
+    });
+    
+    // Update display value when checkboxes change
+    const updateDisplayValue = () => {
+        const checked = Array.from(checkboxes).filter(cb => cb.checked);
+        if (checked.length === 0) {
+            customSelectValue.textContent = 'Select Course Interest';
+        } else if (checked.length === 1) {
+            customSelectValue.textContent = checked[0].getAttribute('data-label');
+        } else {
+            customSelectValue.textContent = `${checked.length} courses selected`;
+        }
+    };
+    
+    // Handle checkbox changes
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', () => {
+            updateDisplayValue();
+        });
+    });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!customSelect.contains(e.target)) {
+            customSelect.classList.remove('active');
+        }
+    });
+    
+    // Prevent closing when clicking inside options
+    customSelectOptions.addEventListener('click', (e) => {
+        e.stopPropagation();
+    });
+    
+    // Initialize display value
+    updateDisplayValue();
+};
+
+// Initialize custom select when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCustomSelect);
+} else {
+    initCustomSelect();
 }
 
 // Add active class to current navigation link

@@ -2288,9 +2288,140 @@ section {
     border: 2px solid #e0e0e0;
     border-radius: 10px;
     font-family: 'Poppins', sans-serif;
-    font-size: 1rem;
-    transition: all 0.3s ease;
+}
+
+.form-group select[multiple] {
+    padding: 10px;
+    min-height: 120px;
+}
+
+.form-group select[multiple] option {
+    padding: 8px;
+    margin: 2px 0;
+}
+
+.form-group select[multiple] option:checked {
+    background: var(--primary-color);
+    color: white;
+}
+
+.form-group small {
+    display: block;
+    margin-top: 0.5rem;
+    color: var(--text-light);
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+/* Custom Select Dropdown with Checkboxes */
+.custom-select-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.custom-select {
+    position: relative;
+    width: 100%;
+}
+
+.custom-select-trigger {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
     background: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+}
+
+.custom-select-trigger:hover {
+    border-color: var(--primary-color);
+}
+
+.custom-select.active .custom-select-trigger {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+.custom-select-trigger i {
+    transition: transform 0.3s ease;
+    color: var(--text-light);
+}
+
+.custom-select.active .custom-select-trigger i {
+    transform: rotate(180deg);
+}
+
+.custom-select-value {
+    color: var(--text-dark);
+}
+
+.custom-select-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    margin-top: 5px;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.custom-select.active .custom-select-options {
+    max-height: 400px;
+    opacity: 1;
+    visibility: visible;
+    overflow-y: auto;
+}
+
+.custom-option {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 12px 15px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.custom-option:last-child {
+    border-bottom: none;
+}
+
+.custom-option:hover {
+    background: rgba(99, 102, 241, 0.05);
+}
+
+.custom-option input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: var(--primary-color);
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.custom-option input[type="checkbox"]:checked + span {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.custom-option span {
+    color: var(--text-dark);
+    font-size: 0.95rem;
+    user-select: none;
 }
 
 .form-group input:focus,
@@ -2303,6 +2434,37 @@ section {
 
 .form-group textarea {
     resize: vertical;
+}
+
+.form-group select[multiple] {
+    padding: 10px;
+    min-height: 120px;
+}
+
+.form-group select[multiple] option {
+    padding: 8px;
+    margin: 2px 0;
+}
+
+.form-group select[multiple] option:checked {
+    background: var(--primary-color);
+    color: white;
+}
+
+.form-group small {
+    display: block;
+    margin-top: 0.5rem;
+    color: var(--text-light);
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: 0.95rem;
 }
 
 .btn {
@@ -3063,6 +3225,40 @@ section {
     .form-group textarea {
         padding: 12px;
         font-size: 16px; /* Prevents zoom on iOS */
+    }
+
+    .custom-select-trigger {
+        padding: 12px;
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+
+    .custom-select-options {
+        max-height: 300px;
+    }
+
+    .custom-option {
+        padding: 10px 12px;
+    }
+
+    .custom-option span {
+        font-size: 0.9rem;
+    }
+
+    .custom-select-trigger {
+        padding: 12px;
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+
+    .custom-select-options {
+        max-height: 300px;
+    }
+
+    .custom-option {
+        padding: 10px 12px;
+    }
+
+    .custom-option span {
+        font-size: 0.9rem;
     }
 
     .btn {
