@@ -198,7 +198,7 @@ const formMessage = document.getElementById('formMessage');
 
 // IMPORTANT: Replace with your Google Apps Script Web App URL
 // Get it after deploying the Google Apps Script (see GOOGLE_SHEETS_SETUP.md)
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzP4Cl5fHyz88Q5JYQQSS9RNq4xA_mIlUyK2SrGOx10XxEt-LeS9f9Zo2MGGkNl80y4/exec';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzvjEErtG4plilEmQu-l3PMphxwddX8QCy7Sk3qtCfy6FFnuC2CW0ERxeU1-MydP38r/exec';
 
 // Save data to Google Sheets
 async function saveToGoogleSheets(formData) {
