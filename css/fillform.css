@@ -1,0 +1,157 @@
+/* Public form fill page (opened from shared link) */
+:root {
+    --ff-primary: #6366f1;
+    --ff-text: #1f2937;
+    --ff-muted: #6b7280;
+    --ff-bg: #f3f4f6;
+    --ff-card: #fff;
+    --ff-border: #e5e7eb;
+    --ff-danger: #dc2626;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body.fillform-body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: linear-gradient(160deg, #eef2ff 0%, #f9fafb 40%, #fff 100%);
+    color: var(--ff-text);
+    min-height: 100vh;
+    padding: 1.5rem 1rem 3rem;
+    line-height: 1.5;
+}
+
+.fillform-wrap {
+    max-width: 560px;
+    margin: 0 auto;
+}
+
+.fillform-card {
+    background: var(--ff-card);
+    border-radius: 16px;
+    padding: 1.75rem;
+    box-shadow: 0 10px 40px rgba(15, 23, 42, 0.08);
+    border: 1px solid var(--ff-border);
+}
+
+.fillform-title {
+    font-size: 1.35rem;
+    font-weight: 800;
+    margin-bottom: 0.35rem;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.fillform-desc {
+    color: var(--ff-muted);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+
+.fillform-q {
+    margin-bottom: 1.35rem;
+}
+
+.fillform-q label.q-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.45rem;
+    font-size: 0.95rem;
+}
+
+.fillform-q .req {
+    color: var(--ff-danger);
+}
+
+.fillform-q input[type='text'],
+.fillform-q textarea,
+.fillform-q select {
+    width: 100%;
+    padding: 0.55rem 0.65rem;
+    border: 1px solid var(--ff-border);
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+.fillform-q textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.fillform-q .opts label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0.4rem 0;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.fillform-q .scale-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.35rem;
+}
+
+.fillform-q .scale-row label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-weight: 500;
+}
+
+.fillform-submit {
+    width: 100%;
+    margin-top: 0.5rem;
+    padding: 0.85rem 1rem;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: #fff;
+}
+
+.fillform-submit:hover {
+    filter: brightness(1.05);
+}
+
+.fillform-error {
+    background: #fef2f2;
+    color: #991b1b;
+    padding: 1rem;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.fillform-success {
+    background: #ecfdf5;
+    color: #065f46;
+    padding: 1rem;
+    border-radius: 12px;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.fillform-foot {
+    text-align: center;
+    margin-top: 1.25rem;
+    font-size: 0.8rem;
+    color: var(--ff-muted);
+}
+
+.fillform-foot a {
+    color: var(--ff-primary);
+    font-weight: 600;
+    text-decoration: none;
+}

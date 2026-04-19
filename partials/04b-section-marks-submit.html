@@ -1,0 +1,42 @@
+    <!-- Submit marks -->
+    <section id="marks-submit" class="marks-submit-section">
+        <div class="container">
+            <h2 class="section-title marks-submit-section__title">Share your results</h2>
+            <p class="marks-submit-section__lead">Add your details and subject scores — use one row per subject or term.</p>
+            <button type="button" class="marks-invite-card" id="marksInviteCard" data-marks-modal-open aria-haspopup="dialog" aria-controls="marksModal">
+                <div class="marks-invite-card__icon"><i class="fas fa-clipboard-check"></i></div>
+                <div class="marks-invite-card__body">
+                    <h3>Submit your marks</h3>
+                    <p>Open the form to enter your details and one or more subject scores.</p>
+                </div>
+                <div class="marks-invite-card__cta"><span class="btn btn-primary marks-invite-card__btn">Open form</span></div>
+            </button>
+        </div>
+    </section>
+
+    <div class="marks-modal" id="marksModal" aria-hidden="true" role="presentation">
+        <div class="marks-modal__backdrop" data-marks-modal-close tabindex="-1"></div>
+        <div class="marks-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="marksModalTitle">
+            <button type="button" class="marks-modal__close" data-marks-modal-close aria-label="Close"><i class="fas fa-times"></i></button>
+            <h2 id="marksModalTitle" class="marks-modal__title">Submit marks</h2>
+            <p id="marksFormMessage" class="marks-form__msg" role="status" aria-live="polite" hidden></p>
+            <form id="marksForm" class="marks-form" novalidate>
+                <div class="marks-form__grid marks-form__grid--student">
+                    <label class="marks-field"><span class="marks-field__label">Student name</span><input type="text" name="studentName" id="marksStudentName" required autocomplete="name" maxlength="120"></label>
+                    <label class="marks-field"><span class="marks-field__label">class &amp; section</span><input type="text" name="class" id="marksClass" required autocomplete="off" maxlength="80" placeholder="e.g. 12-B"></label>
+                    <label class="marks-field"><span class="marks-field__label">School</span><input type="text" name="school" id="marksSchool" required autocomplete="organization" maxlength="160"></label>
+                    <label class="marks-field">
+                        <span class="marks-field__label">Mobile number</span>
+                        <input type="tel" name="mobile" id="marksMobile" required autocomplete="tel" maxlength="10" minlength="10" inputmode="numeric" pattern="[0-9]{10}" title="Enter exactly 10 digits">
+                    </label>
+                </div>
+                <p class="marks-form__subhead">Marks (add a row for each subject / term)</p>
+                <div class="marks-form__rows" id="marksRows" aria-live="polite"></div>
+                <button type="button" class="btn btn-secondary marks-form__add" id="marksAddRow"><i class="fas fa-plus"></i> Add more marks</button>
+                <div class="marks-form__actions">
+                    <button type="button" class="btn btn-secondary" data-marks-modal-close>Cancel</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>

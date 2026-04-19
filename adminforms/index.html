@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin — Forms</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/adminforms.css">
+</head>
+<body class="adminforms-body">
+    <div id="view-login" class="admin-login-wrap">
+        <div class="admin-login-card">
+            <h1>Admin console</h1>
+            <p class="sub">Enter the admin password set in <code>js/adminforms/main.js</code> (<code>ADMIN_PASSWORD</code>). It is checked only in this browser.</p>
+            <form id="login-form">
+                <label for="login-password">Password</label>
+                <input id="login-password" name="password" type="password" autocomplete="current-password" required>
+                <div id="login-error" class="error" aria-live="polite"></div>
+                <button type="submit" class="admin-btn admin-btn-primary">Sign in</button>
+            </form>
+            <p class="sub" style="margin-top:1.25rem;margin-bottom:0;font-size:0.75rem;">
+                <a href="../index.html" style="color:var(--admin-primary);font-weight:600;">← Back to site</a>
+            </p>
+        </div>
+    </div>
+
+    <div id="view-app" class="adminforms-hidden">
+        <div class="admin-shell">
+            <header class="admin-topbar">
+                <div class="admin-brand"><i class="fas fa-wpforms"></i> Forms</div>
+                <div class="admin-topbar-actions">
+                    <button type="button" class="admin-btn admin-btn-secondary admin-btn-sm" id="btn-logout">Log out</button>
+                </div>
+            </header>
+
+            <div id="view-dashboard" class="admin-dash">
+                <h2>Dashboard</h2>
+                <p class="hint">Build drafts here, then use <strong>Offline share link</strong> so students open <code>fillform.html</code> with your link. Drafts stay in this browser’s localStorage.</p>
+                <div class="admin-new-btns">
+                    <button type="button" class="admin-btn admin-btn-primary" id="btn-new-form"><i class="fas fa-file-alt"></i> New form</button>
+                </div>
+                <section class="admin-section">
+                    <div class="admin-section-title">Draft forms (this browser)</div>
+                    <div class="admin-grid" id="form-list"></div>
+                </section>
+            </div>
+
+            <div id="view-form-editor" class="adminforms-hidden">
+                <div id="form-editor-root"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-root"></div>
+
+    <script type="module" src="../js/adminforms/main.js"></script>
+</body>
+</html>

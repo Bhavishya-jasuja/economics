@@ -1,16 +1,18 @@
 <!DOCTYPE html>
+<!-- Site shell: edit files in partials/, then run tools/build-index.ps1 to regenerate index.html -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>UDIT BHAIYA - Economics and BST</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+
     <!-- Modern Background Animation -->
     <div class="background-animation">
         <div class="floating-icon"><i class="fas fa-chart-line"></i></div>
@@ -48,6 +50,7 @@
                     <li><a href="#courses" class="nav-link">Courses</a></li>
                     <li><a href="#memories" class="nav-link">Memories</a></li>
                     <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+                    <li><a href="#marks-submit" class="nav-link">Submit marks</a></li>
                     <li><a href="#contact" class="nav-link">Get In Touch</a></li>
                 </ul>
                 <div class="hamburger" id="hamburger">
@@ -229,6 +232,49 @@
             </div>
         </div>
     </section>
+
+    <!-- Submit marks -->
+    <section id="marks-submit" class="marks-submit-section">
+        <div class="container">
+            <h2 class="section-title marks-submit-section__title">Share your results</h2>
+            <p class="marks-submit-section__lead">Add your details and subject scores — use one row per subject or term.</p>
+            <button type="button" class="marks-invite-card" id="marksInviteCard" data-marks-modal-open aria-haspopup="dialog" aria-controls="marksModal">
+                <div class="marks-invite-card__icon"><i class="fas fa-clipboard-check"></i></div>
+                <div class="marks-invite-card__body">
+                    <h3>Submit your marks</h3>
+                    <p>Open the form to enter your details and one or more subject scores.</p>
+                </div>
+                <div class="marks-invite-card__cta"><span class="btn btn-primary marks-invite-card__btn">Open form</span></div>
+            </button>
+        </div>
+    </section>
+
+    <div class="marks-modal" id="marksModal" aria-hidden="true" role="presentation">
+        <div class="marks-modal__backdrop" data-marks-modal-close tabindex="-1"></div>
+        <div class="marks-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="marksModalTitle">
+            <button type="button" class="marks-modal__close" data-marks-modal-close aria-label="Close"><i class="fas fa-times"></i></button>
+            <h2 id="marksModalTitle" class="marks-modal__title">Submit marks</h2>
+            <p id="marksFormMessage" class="marks-form__msg" role="status" aria-live="polite" hidden></p>
+            <form id="marksForm" class="marks-form" novalidate>
+                <div class="marks-form__grid marks-form__grid--student">
+                    <label class="marks-field"><span class="marks-field__label">Student name</span><input type="text" name="studentName" id="marksStudentName" required autocomplete="name" maxlength="120"></label>
+                    <label class="marks-field"><span class="marks-field__label">class &amp; section</span><input type="text" name="class" id="marksClass" required autocomplete="off" maxlength="80" placeholder="e.g. 12-B"></label>
+                    <label class="marks-field"><span class="marks-field__label">School</span><input type="text" name="school" id="marksSchool" required autocomplete="organization" maxlength="160"></label>
+                    <label class="marks-field">
+                        <span class="marks-field__label">Mobile number</span>
+                        <input type="tel" name="mobile" id="marksMobile" required autocomplete="tel" maxlength="10" minlength="10" inputmode="numeric" pattern="[0-9]{10}" title="Enter exactly 10 digits">
+                    </label>
+                </div>
+                <p class="marks-form__subhead">Marks (add a row for each subject / term)</p>
+                <div class="marks-form__rows" id="marksRows" aria-live="polite"></div>
+                <button type="button" class="btn btn-secondary marks-form__add" id="marksAddRow"><i class="fas fa-plus"></i> Add more marks</button>
+                <div class="marks-form__actions">
+                    <button type="button" class="btn btn-secondary" data-marks-modal-close>Cancel</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
     <!-- Courses Section -->
     <section id="courses" class="courses">
@@ -689,7 +735,7 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script type="module" src="js/main.js"></script>
     <!-- Instagram Embed Script -->
     <script async src="//www.instagram.com/embed.js"></script>
 </body>

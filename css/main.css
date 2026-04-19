@@ -1,0 +1,15 @@
+/**
+ * Main stylesheet — loads modular CSS in cascade order.
+ * Edit the numbered files under css/ rather than this list when possible.
+ */
+@import url('01-base.css');
+@import url('02-nav-section.css');
+@import url('03-about.css');
+@import url('04-results.css');
+@import url('05-courses.css');
+@import url('06-memories.css');
+@import url('07-testimonials.css');
+@import url('08-contact.css');
+@import url('09-footer.css');
+@import url('10-animations-responsive.css');
+@import url('11-marks-submit.css');
