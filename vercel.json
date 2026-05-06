@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/submit-marks",
+      "destination": "/index.html?open=submit-marks"
+    },
+    {
+      "source": "/submit-marks/",
+      "destination": "/index.html?open=submit-marks"
+    }
+  ]
+}

@@ -50,11 +50,13 @@ function shouldOpenMarksModalFromUrl() {
     const open = (params.get('open') || '').trim().toLowerCase();
     const marksForm = (params.get('marksForm') || '').trim().toLowerCase();
     const submitMarks = (params.get('submit-marks') || '').trim().toLowerCase();
+    const hasSubmitMarksParam = params.has('submit-marks');
     const hash = (window.location.hash || '').trim().toLowerCase();
 
     if (path.endsWith('/submit-marks') || path.endsWith('/submit-marks/')) return true;
     if (open === 'marks' || open === 'marks-form' || open === 'submit-marks') return true;
     if (marksForm === '1' || marksForm === 'true' || marksForm === 'yes') return true;
+    if (hasSubmitMarksParam) return true;
     if (submitMarks === '1' || submitMarks === 'true' || submitMarks === 'yes') return true;
     if (hash === '#marks' || hash === '#marks-form' || hash === '#open-marks-form' || hash === '#submit-marks') return true;
     return false;
