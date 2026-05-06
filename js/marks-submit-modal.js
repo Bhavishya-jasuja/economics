@@ -44,6 +44,44 @@ function updateRemoveButtons(container) {
     });
 }
 
+function shouldOpenMarksModalFromUrl() {
+    const path = (window.location.pathname || '').toLowerCase();
+    const params = new URLSearchParams(window.location.search);
+    const open = (params.get('open') || '').trim().toLowerCase();
+    const marksForm = (params.get('marksForm') || '').trim().toLowerCase();
+    const submitMarks = (params.get('submit-marks') || '').trim().toLowerCase();
+    const hash = (window.location.hash || '').trim().toLowerCase();
+
+    if (path.endsWith('/submit-marks') || path.endsWith('/submit-marks/')) return true;
+    if (open === 'marks' || open === 'marks-form' || open === 'submit-marks') return true;
+    if (marksForm === '1' || marksForm === 'true' || marksForm === 'yes') return true;
+    if (submitMarks === '1' || submitMarks === 'true' || submitMarks === 'yes') return true;
+    if (hash === '#marks' || hash === '#marks-form' || hash === '#open-marks-form' || hash === '#submit-marks') return true;
+    return false;
+}
+
+function cleanupMarksModalUrlTrigger() {
+    const current = new URL(window.location.href);
+    const path = (current.pathname || '').toLowerCase();
+    const hadOpen = current.searchParams.has('open');
+    const hadMarksForm = current.searchParams.has('marksForm');
+    const hadSubmitMarksParam = current.searchParams.has('submit-marks');
+    const hash = (current.hash || '').trim().toLowerCase();
+    const hadHashTrigger = hash === '#marks' || hash === '#marks-form' || hash === '#open-marks-form' || hash === '#submit-marks';
+    const hadSubmitMarksPath = path.endsWith('/submit-marks') || path.endsWith('/submit-marks/');
+
+    if (!hadOpen && !hadMarksForm && !hadSubmitMarksParam && !hadHashTrigger && !hadSubmitMarksPath) return;
+
+    current.searchParams.delete('open');
+    current.searchParams.delete('marksForm');
+    current.searchParams.delete('submit-marks');
+    if (hadHashTrigger) current.hash = '';
+    if (hadSubmitMarksPath) current.pathname = current.pathname.replace(/\/submit-marks\/?$/i, '/') || '/';
+
+    const cleanUrl = `${current.pathname}${current.search}${current.hash}`;
+    window.history.replaceState({}, '', cleanUrl);
+}
+
 export function initMarksSubmitModal() {
     const modal = document.getElementById('marksModal');
     const form = document.getElementById('marksForm');
@@ -104,6 +142,11 @@ export function initMarksSubmitModal() {
             }
         });
     });
+
+    if (shouldOpenMarksModalFromUrl()) {
+        openModal();
+        cleanupMarksModalUrlTrigger();
+    }
 
     modal.querySelectorAll('[data-marks-modal-close]').forEach((el) => {
         el.addEventListener('click', () => closeModal());
