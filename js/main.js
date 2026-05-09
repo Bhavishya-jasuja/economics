@@ -9,6 +9,7 @@ import { initContactForm } from './contact-form.js';
 import { initTestimonialsSlider } from './testimonials.js';
 import { initCustomSelect } from './custom-select.js';
 import { initMarksSubmitModal } from './marks-submit-modal.js';
+import { init3DTilt } from './3d-tilt.js';
 
 initNavigation();
 initMemoryGallery();
@@ -18,4 +19,5 @@ initContactForm();
 initTestimonialsSlider();
 initCustomSelect();
 initMarksSubmitModal();
+init3DTilt();
 logGoogleScriptStatus();

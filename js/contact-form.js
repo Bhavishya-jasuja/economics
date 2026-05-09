@@ -1,15 +1,40 @@
 import { saveContactFormToSheets } from './services/google-sheets.js';
 
 const PHONE_REGEX = /^[0-9]{10}$/;
+const WA_NUMBER = '919084514455';
+
+function setBtn(btn, text, disabled) {
+    const span = btn.querySelector('span');
+    if (span) span.textContent = text;
+    else btn.textContent = text;
+    btn.disabled = disabled;
+}
 
 function resetMessage(formMessage) {
     setTimeout(() => {
         formMessage.className = 'form-message';
-    }, 5000);
+    }, 6000);
+}
+
+
+function buildWaMessage(data) {
+    return encodeURIComponent(
+        `Hello Udit Bhaiya,\n\n` +
+        `I just filled the enrollment form. Here are my details:\n\n` +
+        `Name: ${data.name}\n` +
+        `Phone: ${data.phone}\n` +
+        `Email: ${data.email}\n` +
+        `Courses: ${data.courses}\n` +
+        `Class: ${data.class}\n` +
+        `School: ${data.school}\n` +
+        `Parent Phone: ${data.parentPhone}\n` +
+        `Address: ${data.address}\n\n` +
+        `Please confirm my enrollment. Thank you!`
+    );
 }
 
 /**
- * Contact section form → Google Sheets (only runs if #contactForm exists).
+ * Contact section form → Google Sheets + WhatsApp redirect on success.
  */
 export function initContactForm() {
     const contactForm = document.getElementById('contactForm');
@@ -20,8 +45,7 @@ export function initContactForm() {
         e.preventDefault();
 
         const submitBtn = contactForm.querySelector('button[type="submit"]');
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending...';
+        setBtn(submitBtn, 'Sending...', true);
 
         const courseCheckboxes = document.querySelectorAll('input[name="courses"]:checked');
         const selectedCourses = Array.from(courseCheckboxes).map((cb) => cb.value);
@@ -40,8 +64,7 @@ export function initContactForm() {
         const fail = (msg) => {
             formMessage.textContent = msg;
             formMessage.className = 'form-message error';
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Send Message';
+            setBtn(submitBtn, 'Send Message', false);
             resetMessage(formMessage);
         };
 
@@ -72,20 +95,23 @@ export function initContactForm() {
         }
 
         const result = await saveContactFormToSheets(formData);
-
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Send Message';
+        setBtn(submitBtn, 'Send Message', false);
 
         if (result.success) {
             formMessage.textContent =
-                'Thank you! Your message has been saved successfully. We will get back to you soon.';
+                '✅ Message sent! Redirecting to WhatsApp...';
             formMessage.className = 'form-message success';
             contactForm.reset();
+
+            setTimeout(() => {
+                window.location.href = `https://wa.me/${WA_NUMBER}?text=${buildWaMessage(formData)}`;
+            }, 1500);
         } else {
             formMessage.textContent =
                 'There was an error saving your message. Please try again or contact us directly.';
             formMessage.className = 'form-message error';
         }
+
         resetMessage(formMessage);
     });
 }

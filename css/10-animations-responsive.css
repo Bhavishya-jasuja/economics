@@ -83,39 +83,6 @@
         font-size: 2.2rem;
     }
 
-    .about-content {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-
-    .about-image {
-        position: static;
-        max-width: 250px;
-        margin: 0 auto;
-    }
-
-    .intro-text {
-        font-size: 0.95rem;
-        line-height: 1.7;
-        margin-bottom: 1.5rem;
-    }
-
-    .teaching-methods,
-    .subjects-taught {
-        margin-top: 1.5rem;
-    }
-
-    .teaching-methods h4,
-    .subjects-taught h4 {
-        font-size: 1.3rem;
-        margin-bottom: 1rem;
-    }
-
-    .cta-section {
-        margin-top: 1.8rem;
-        padding: 1.5rem;
-    }
-
     .contact-content {
         grid-template-columns: 1fr;
         gap: 2rem;
@@ -154,10 +121,6 @@
 @media (max-width: 768px) {
     section {
         padding: 60px 0 50px;
-    }
-
-    .about {
-        padding-top: 90px;
     }
 
     .section-title {
@@ -296,11 +259,6 @@
 @media (max-width: 480px) {
     section {
         padding: 40px 0 30px;
-    }
-
-    .about {
-        padding-top: 80px;
-        padding-bottom: 30px;
     }
 
     .section-title {
@@ -832,12 +790,12 @@
     }
 }
 
-/* Smooth scroll reveal animation */
+/* Scroll reveal — 3D version defined in 12-3d-effects.css (loaded last).
+   This fallback applies only if 12-3d-effects.css is not present. */
 .reveal {
-    position: relative;
     opacity: 0;
-    transform: translateY(50px);
-    transition: all 0.6s ease;
+    transform: translateY(40px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
 }
 
 .reveal.active {

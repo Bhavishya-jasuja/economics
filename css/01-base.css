@@ -1,4 +1,4 @@
-﻿/* Reset and Base Styles */
+/* Reset and Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -6,20 +6,38 @@
 }
 
 :root {
-    --primary-color: #6366F1;
-    --secondary-color: #8B5CF6;
-    --accent-color: #EC4899;
-    --success-color: #10B981;
-    --text-dark: #1F2937;
-    --text-light: #6B7280;
-    --bg-light: #F9FAFB;
+    /* ── Brand colors ─────────────────────────────── */
+    --primary-color:   #7C3AED;   /* deep violet   */
+    --primary-light:   #A855F7;   /* bright violet */
+    --secondary-color: #0EA5E9;   /* sky blue      */
+    --accent-color:    #F59E0B;   /* amber / gold  */
+    --accent-pink:     #EC4899;   /* hot pink      */
+    --success-color:   #10B981;   /* emerald       */
+
+    /* ── Text ─────────────────────────────────────── */
+    --text-dark:  #0F172A;   /* slate-900  */
+    --text-mid:   #334155;   /* slate-700  */
+    --text-light: #64748B;   /* slate-500  */
+
+    /* ── Backgrounds ──────────────────────────────── */
+    --bg-light: #F8FAFC;     /* slate-50   */
     --bg-white: #FFFFFF;
-    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    --shadow-hover: 0 20px 25px rgba(99, 102, 241, 0.15);
-    --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-    --gradient-modern: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%);
-    --gradient-soft: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+    --bg-hero:  #0A0720;     /* very dark indigo  */
+
+    /* ── Shadows ──────────────────────────────────── */
+    --shadow:       0 4px 6px rgba(0, 0, 0, 0.07);
+    --shadow-hover: 0 20px 40px rgba(124, 58, 237, 0.2);
+    --shadow-card:  0 8px 32px rgba(15, 23, 42, 0.1);
+
+    /* ── Gradients ────────────────────────────────── */
+    --gradient-modern:   linear-gradient(135deg, #7C3AED 0%, #A855F7 50%, #0EA5E9 100%);
+    --gradient-warm:     linear-gradient(135deg, #7C3AED 0%, #EC4899 55%, #F59E0B 100%);
+    --gradient-primary:  linear-gradient(135deg, #7C3AED 0%, #A855F7 100%);
+    --gradient-soft:     linear-gradient(135deg, rgba(124,58,237,.08) 0%, rgba(14,165,233,.08) 100%);
+    --gradient-gold:     linear-gradient(135deg, #F59E0B 0%, #FBBF24 100%);
+    --gradient-hero:     linear-gradient(135deg, #0A0720 0%, #150D3A 50%, #0C1854 100%);
+    /* legacy alias kept so other components that use --gradient-secondary still compile */
+    --gradient-secondary: linear-gradient(135deg, #7C3AED 0%, #EC4899 100%);
 }
 
 html {
@@ -27,21 +45,16 @@ html {
 }
 
 body {
-    font-family: 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     line-height: 1.7;
     color: var(--text-dark);
     overflow-x: hidden;
-    position: relative;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-    background-attachment: fixed;
+    background: linear-gradient(160deg, #F8FAFC 0%, #EEF2FF 50%, #F0F9FF 100%);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* Mobile optimizations */
-* {
-    -webkit-tap-highlight-color: transparent;
-}
+* { -webkit-tap-highlight-color: transparent; }
 
 img {
     max-width: 100%;
@@ -49,213 +62,86 @@ img {
     display: block;
 }
 
-/* Modern Background Animation */
+/* ── Modern Background Animation ─────────────────── */
 .background-animation {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     z-index: -1;
     overflow: hidden;
     pointer-events: none;
-    background: 
-        radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
-    animation: backgroundShift 20s ease-in-out infinite;
-}
-
-@keyframes backgroundShift {
-    0%, 100% {
-        transform: scale(1) rotate(0deg);
-        opacity: 1;
-    }
-    50% {
-        transform: scale(1.1) rotate(5deg);
-        opacity: 0.9;
-    }
+    contain: layout style paint;
+    background:
+        radial-gradient(circle at 20% 30%, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(14, 165, 233, 0.1)  0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.06) 0%, transparent 50%);
 }
 
 .floating-icon {
     position: absolute;
-    color: rgba(99, 102, 241, 0.2);
-    font-size: 3.5rem;
-    animation: float 20s infinite ease-in-out;
-    opacity: 0.4;
-    filter: blur(1px);
-    transition: all 0.3s ease;
+    color: rgba(124, 58, 237, 0.18);
+    font-size: 3rem;
+    animation: float 22s infinite ease-in-out;
+    opacity: 0.3;
+    will-change: transform;
 }
 
-.floating-icon:hover {
-    opacity: 0.6;
-    filter: blur(0px);
-    transform: scale(1.2);
-}
-
-.floating-icon:nth-child(1) {
-    top: 10%;
-    left: 10%;
-    animation-delay: 0s;
-    animation-duration: 25s;
-}
-
-.floating-icon:nth-child(2) {
-    top: 20%;
-    right: 15%;
-    animation-delay: 2s;
-    animation-duration: 30s;
-}
-
-.floating-icon:nth-child(3) {
-    bottom: 30%;
-    left: 20%;
-    animation-delay: 4s;
-    animation-duration: 22s;
-}
-
-.floating-icon:nth-child(4) {
-    top: 50%;
-    right: 10%;
-    animation-delay: 1s;
-    animation-duration: 28s;
-}
-
-.floating-icon:nth-child(5) {
-    bottom: 20%;
-    right: 30%;
-    animation-delay: 3s;
-    animation-duration: 26s;
-}
-
-.floating-icon:nth-child(6) {
-    top: 70%;
-    left: 15%;
-    animation-delay: 5s;
-    animation-duration: 24s;
-}
-
-.floating-icon:nth-child(7) {
-    top: 40%;
-    left: 50%;
-    animation-delay: 2.5s;
-    animation-duration: 27s;
-}
-
-.floating-icon:nth-child(8) {
-    bottom: 10%;
-    right: 20%;
-    animation-delay: 4.5s;
-    animation-duration: 29s;
-}
-
-.floating-icon:nth-child(9) {
-    top: 60%;
-    left: 70%;
-    animation-delay: 1.5s;
-    animation-duration: 26s;
-}
-
-.floating-icon:nth-child(10) {
-    bottom: 40%;
-    left: 5%;
-    animation-delay: 3.5s;
-    animation-duration: 28s;
-}
-
-.floating-icon:nth-child(11) {
-    top: 30%;
-    right: 40%;
-    animation-delay: 2.2s;
-    animation-duration: 24s;
-}
-
-.floating-icon:nth-child(12) {
-    bottom: 60%;
-    right: 10%;
-    animation-delay: 4.8s;
-    animation-duration: 27s;
-}
+.floating-icon:nth-child(1) { top: 10%; left: 10%;    animation-delay: 0s;  animation-duration: 25s; }
+.floating-icon:nth-child(2) { top: 20%; right: 15%;   animation-delay: 2s;  animation-duration: 30s; }
+.floating-icon:nth-child(3) { bottom: 30%; left: 20%; animation-delay: 4s;  animation-duration: 22s; }
+.floating-icon:nth-child(4) { top: 50%; right: 10%;   animation-delay: 1s;  animation-duration: 28s; }
+.floating-icon:nth-child(5) { bottom: 20%; right: 30%;animation-delay: 3s;  animation-duration: 26s; }
 
 @keyframes float {
-    0%, 100% {
-        transform: translate(0, 0) rotate(0deg) scale(1);
-        opacity: 0.4;
-    }
-    25% {
-        transform: translate(50px, -50px) rotate(10deg) scale(1.1);
-        opacity: 0.6;
-    }
-    50% {
-        transform: translate(-40px, 40px) rotate(-10deg) scale(0.9);
-        opacity: 0.5;
-    }
-    75% {
-        transform: translate(40px, 50px) rotate(8deg) scale(1.05);
-        opacity: 0.6;
-    }
+    0%, 100% { transform: translate(0, 0)       rotate(0deg)  scale(1);    opacity: 0.3; }
+    50%       { transform: translate(25px,-25px) rotate(8deg)  scale(1.06); opacity: 0.5; }
 }
 
-/* Gradient Orbs Animation */
+/* ── Gradient Orbs ────────────────────────────────── */
 .gradient-orbs {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     z-index: -1;
     pointer-events: none;
     overflow: hidden;
+    contain: layout style paint;
 }
 
 .orb {
     position: absolute;
     border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.6;
-    animation: orbFloat 20s ease-in-out infinite;
+    filter: blur(70px);
+    opacity: 0.4;
+    will-change: transform;
+    animation: orbFloat 24s ease-in-out infinite;
 }
 
 .orb-1 {
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(99, 102, 241, 0.4) 0%, rgba(139, 92, 246, 0.2) 50%, transparent 70%);
-    top: -200px;
-    left: -200px;
+    width: 450px; height: 450px;
+    background: radial-gradient(circle, rgba(124,58,237,.35) 0%, rgba(168,85,247,.15) 50%, transparent 70%);
+    top: -180px; left: -180px;
     animation-delay: 0s;
 }
-
 .orb-2 {
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(236, 72, 153, 0.4) 0%, rgba(139, 92, 246, 0.2) 50%, transparent 70%);
-    bottom: -300px;
-    right: -300px;
-    animation-delay: 5s;
+    width: 520px; height: 520px;
+    background: radial-gradient(circle, rgba(14,165,233,.3)  0%, rgba(56,189,248,.1)  50%, transparent 70%);
+    bottom: -260px; right: -260px;
+    animation-delay: 6s;
 }
-
 .orb-3 {
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(139, 92, 246, 0.4) 0%, rgba(99, 102, 241, 0.2) 50%, transparent 70%);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    animation-delay: 10s;
+    width: 360px; height: 360px;
+    background: radial-gradient(circle, rgba(245,158,11,.2)  0%, rgba(251,191,36,.1)  50%, transparent 70%);
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    animation-delay: 12s;
 }
 
 @keyframes orbFloat {
-    0%, 100% {
-        transform: translate(0, 0) scale(1);
-    }
-    33% {
-        transform: translate(100px, -100px) scale(1.2);
-    }
-    66% {
-        transform: translate(-80px, 80px) scale(0.9);
-    }
+    0%, 100% { transform: translate3d(0, 0, 0)        scale(1); }
+    33%       { transform: translate3d(70px,-70px, 0)  scale(1.12); }
+    66%       { transform: translate3d(-60px,60px, 0)  scale(0.9); }
 }
 
+/* ── Layout container ─────────────────────────────── */
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -263,15 +149,11 @@ img {
     width: 100%;
 }
 
-/* Container responsive adjustments */
-@media (max-width: 768px) {
-    .container {
-        padding: 0 15px;
-    }
-}
+@media (max-width: 768px) { .container { padding: 0 15px; } }
+@media (max-width: 480px) { .container { padding: 0 12px; } }
 
-@media (max-width: 480px) {
-    .container {
-        padding: 0 12px;
-    }
+/* ── Reduced-motion ───────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+    .background-animation, .floating-icon, .gradient-orbs, .orb { animation: none; }
+    html { scroll-behavior: auto; }
 }

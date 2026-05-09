@@ -8,25 +8,29 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <!-- Modern Background Animation -->
+    <!-- Modern Background Animation (5 icons + CSS 3D geometric shapes) -->
     <div class="background-animation">
         <div class="floating-icon"><i class="fas fa-chart-line"></i></div>
-        <div class="floating-icon"><i class="fas fa-book"></i></div>
-        <div class="floating-icon"><i class="fas fa-calculator"></i></div>
         <div class="floating-icon"><i class="fas fa-graduation-cap"></i></div>
+        <div class="floating-icon"><i class="fas fa-book"></i></div>
         <div class="floating-icon"><i class="fas fa-lightbulb"></i></div>
         <div class="floating-icon"><i class="fas fa-coins"></i></div>
-        <div class="floating-icon"><i class="fas fa-chart-bar"></i></div>
-        <div class="floating-icon"><i class="fas fa-pencil-alt"></i></div>
-        <div class="floating-icon"><i class="fas fa-globe"></i></div>
-        <div class="floating-icon"><i class="fas fa-landmark"></i></div>
-        <div class="floating-icon"><i class="fas fa-chart-pie"></i></div>
-        <div class="floating-icon"><i class="fas fa-trending-up"></i></div>
+        <!-- CSS-only 3D rotating shapes -->
+        <div class="shape-3d shape-ring-1 ring-3d"></div>
+        <div class="shape-3d shape-ring-2 ring-3d-2"></div>
+        <div class="shape-3d shape-cube-1 cube-3d">
+            <div class="cube-face cube-front"></div>
+            <div class="cube-face cube-back"></div>
+            <div class="cube-face cube-right"></div>
+            <div class="cube-face cube-left"></div>
+            <div class="cube-face cube-top"></div>
+            <div class="cube-face cube-bottom"></div>
+        </div>
     </div>
     
     <!-- Animated Gradient Orbs -->
@@ -40,10 +44,15 @@
     <nav class="navbar" id="navbar">
         <div class="container">
             <div class="nav-wrapper">
-                <div class="logo">
-                    <i class="fas fa-chart-line"></i>
-                    <span>UDIT BHAIYA</span>
-                </div>
+                <a href="#about" class="logo">
+                    <div class="logo-mark">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="logo-text">
+                        <span class="logo-name">UDIT BHAIYA</span>
+                        <span class="logo-sub">Economics &amp; BST</span>
+                    </div>
+                </a>
                 <ul class="nav-menu" id="navMenu">
                     <li><a href="#about" class="nav-link">About Us</a></li>
                     <li><a href="#results" class="nav-link">Top Results</a></li>
@@ -62,9 +71,110 @@
         </div>
     </nav>
 
-    <!-- About Us Section -->
-    <section id="about" class="about">
-        <!-- Study-themed Background Animations -->
+    <!-- ══ HERO SECTION (About Us anchor) ══ -->
+    <section id="about" class="hero">
+        <!-- Animated dark background -->
+        <div class="hero-bg">
+            <div class="hero-orb h-orb-1"></div>
+            <div class="hero-orb h-orb-2"></div>
+            <div class="hero-orb h-orb-3"></div>
+            <div class="hero-particle hp-1"></div>
+            <div class="hero-particle hp-2"></div>
+            <div class="hero-particle hp-3"></div>
+            <div class="hero-particle hp-4"></div>
+            <div class="hero-particle hp-5"></div>
+            <div class="hero-particle hp-6"></div>
+        </div>
+
+        <div class="container">
+            <div class="hero-grid">
+
+                <!-- Left: text + CTAs -->
+                <div class="hero-left">
+                    <div class="hero-badge">
+                        <i class="fas fa-star"></i>
+                        <span>India's Most Trusted Economics Tutor</span>
+                    </div>
+
+                    <h1 class="hero-heading">
+                        Crack Your Boards in<br>
+                        <span class="grad-text">Economics</span> &amp;
+                        <span class="grad-text-warm">BST</span>
+                    </h1>
+
+                    <p class="hero-subtext">
+                        11+ years of teaching. Real-life examples. Visual learning.<br>
+                        Join 1000+ students who've aced their boards with Udit Bhaiya.
+                    </p>
+
+                    <div class="hero-stats">
+                        <div class="hero-stat">
+                            <div class="hero-stat-num">11<span>+</span></div>
+                            <div class="hero-stat-lbl">Years Teaching</div>
+                        </div>
+                        <div class="hero-stat-sep"></div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-num">1000<span>+</span></div>
+                            <div class="hero-stat-lbl">Students</div>
+                        </div>
+                        <div class="hero-stat-sep"></div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-num">95<span>%+</span></div>
+                            <div class="hero-stat-lbl">Board Results</div>
+                        </div>
+                    </div>
+
+                    <div class="hero-actions">
+                        <a href="#contact" class="hero-btn-primary">
+                            <i class="fas fa-rocket"></i> Enroll Now — Free Demo
+                        </a>
+                        <a href="https://wa.me/919084514455" class="hero-btn-wa" target="_blank" rel="noopener">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </a>
+                    </div>
+
+                    <div class="hero-tags">
+                        <span><i class="fas fa-check-circle"></i> Offline &amp; Online</span>
+                        <span><i class="fas fa-check-circle"></i> Class 11 &amp; 12</span>
+                        <span><i class="fas fa-check-circle"></i> CUET Prep</span>
+                    </div>
+                </div>
+
+                <!-- Right: photo with floating chips -->
+                <div class="hero-right">
+                    <div class="hero-photo-wrap">
+                        <div class="hero-photo-glow"></div>
+                        <img src="images/teacher/uditbhaiya.png"
+                             alt="Udit Bhaiya – Economics &amp; BST Teacher"
+                             class="hero-photo"
+                             loading="eager" decoding="async"
+                             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                        <div class="hero-photo-ph" style="display:none;">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="float-chip chip-tr">
+                            <i class="fas fa-trophy"></i> Top Results 2025
+                        </div>
+                        <div class="float-chip chip-bl">
+                            <i class="fas fa-star"></i> 4.9 ★ Rated
+                        </div>
+                        <div class="float-chip chip-tl">
+                            <i class="fas fa-users"></i> 1000+ Students
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <a href="#results" class="hero-scroll-cue" aria-label="Scroll to results">
+            <span>Scroll to explore</span>
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </section>
+
+    <!-- ══ WHY US / About Details ══ -->
+    <section class="why-us">
         <div class="study-animations">
             <div class="floating-book book-1"><i class="fas fa-book"></i></div>
             <div class="floating-book book-2"><i class="fas fa-book-open"></i></div>
@@ -77,123 +187,49 @@
                     <polyline points="10,50 25,40 40,30 55,20 70,15 85,10" fill="none" stroke="currentColor" stroke-width="2"/>
                     <circle cx="10" cy="50" r="2" fill="currentColor"/>
                     <circle cx="25" cy="40" r="2" fill="currentColor"/>
-                    <circle cx="40" cy="30" r="2" fill="currentColor"/>
                     <circle cx="55" cy="20" r="2" fill="currentColor"/>
-                    <circle cx="70" cy="15" r="2" fill="currentColor"/>
                     <circle cx="85" cy="10" r="2" fill="currentColor"/>
-                </svg>
-            </div>
-            <div class="floating-graph graph-2">
-                <svg viewBox="0 0 100 60" class="graph-svg">
-                    <rect x="10" y="40" width="15" height="20" fill="currentColor" opacity="0.7"/>
-                    <rect x="30" y="30" width="15" height="30" fill="currentColor" opacity="0.7"/>
-                    <rect x="50" y="20" width="15" height="40" fill="currentColor" opacity="0.7"/>
-                    <rect x="70" y="15" width="15" height="45" fill="currentColor" opacity="0.7"/>
                 </svg>
             </div>
             <div class="floating-equation eq-1">y = f(x)</div>
             <div class="floating-equation eq-2">GDP ↑</div>
-            <div class="floating-equation eq-3">P = MC</div>
             <div class="floating-icon-study icon-1"><i class="fas fa-lightbulb"></i></div>
             <div class="floating-icon-study icon-2"><i class="fas fa-graduation-cap"></i></div>
             <div class="floating-icon-study icon-3"><i class="fas fa-pencil-alt"></i></div>
-            <div class="floating-icon-study icon-4"><i class="fas fa-coins"></i></div>
-            <div class="floating-icon-study icon-5"><i class="fas fa-globe"></i></div>
-            <div class="floating-icon-study icon-6"><i class="fas fa-trending-up"></i></div>
             <div class="study-particle particle-1"></div>
             <div class="study-particle particle-2"></div>
             <div class="study-particle particle-3"></div>
-            <div class="study-particle particle-4"></div>
-            <div class="study-particle particle-5"></div>
-            <div class="study-particle particle-6"></div>
             <div class="study-line line-1"></div>
-            <div class="study-line line-2"></div>
-            <div class="study-line line-3"></div>
         </div>
         <div class="container">
-            <h2 class="section-title">Economics & Business Studies, Made Simple</h2>
-            <div class="about-content">
-                <div class="about-image">
-                    <img src="images/teacher/uditbhaiya.png" alt="Udit Bhaiya - Economics and BST Teacher" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="image-placeholder" style="display: none;">
-                        <i class="fas fa-user-tie"></i>
-                        <p>Add your photo:<br>images/teacher/teacher-photo.jpg</p>
-                    </div>
-                </div>
-                <div class="about-text">
-                    <p class="intro-text"><strong>Learning — Smarter, Clearer, and More Interactive</strong></p>
-                    <p class="intro-text">With over <strong>11 years</strong> of teaching experience, my goal is to help students truly understand Economics and BST instead of memorizing it. Through real-life examples, visual explanations, and interactive discussions, complex concepts become clear, relatable, and easy to master.</p>
-                    
-                    <div class="teaching-methods">
-                        <h4><i class="fas fa-rocket"></i> Why Students Choose Us</h4>
-                        <ul>
-                            <li><i class="fas fa-chart-bar"></i> <strong>Visual PPT Learning</strong> - Concepts simplified with charts and smart presentations</li>
-                            <li><i class="fas fa-desktop"></i> <strong>Hi-tech Infrastructure</strong> - Engage, discuss, and solve doubts instantly</li>
-                            <li><i class="fas fa-mobile-alt"></i> <strong>Mobile Learning Support</strong> - Stay connected with notes and updates anytime</li>
-                            <li><i class="fas fa-clipboard-check"></i> <strong>Regular Tests</strong> - Practice consistently and track your progress</li>
-                        </ul>
-                    </div>
+            <h2 class="section-title">Why Students Choose Udit Bhaiya</h2>
+            <p class="section-subtitle">Economics &amp; BST made clear, visual, and exam-ready</p>
+            <div class="why-us-content">
+                <p class="intro-text">With over <strong>11 years</strong> of teaching experience, my goal is to help students truly understand Economics and BST instead of memorising it. Through real-life examples, visual explanations, and interactive discussions, complex concepts become clear, relatable, and easy to master.</p>
 
-                    <div class="cta-section">
-                        <h4>Ready to Master Economics and BST?</h4>
-                        <p>Join Udit Bhaiya and start learning Economics and BST the smart way.</p>
-                        <a href="#contact" class="btn btn-primary">👉 Enroll Now</a>
-                    </div>
-
-                    <p class="tagline">"Turning Economics and BST from Confusing to Crystal Clear."</p>
+                <div class="teaching-methods">
+                    <h4><i class="fas fa-rocket"></i> What Makes Us Different</h4>
+                    <ul>
+                        <li><i class="fas fa-chart-bar"></i> <strong>Visual PPT Learning</strong> — Concepts simplified with charts and smart presentations</li>
+                        <li><i class="fas fa-desktop"></i> <strong>Hi-tech Infrastructure</strong> — Engage, discuss, and solve doubts instantly</li>
+                        <li><i class="fas fa-mobile-alt"></i> <strong>Mobile Learning Support</strong> — Stay connected with notes and updates anytime</li>
+                        <li><i class="fas fa-clipboard-check"></i> <strong>Regular Tests</strong> — Practice consistently and track your progress</li>
+                    </ul>
                 </div>
+
+                <div class="cta-section">
+                    <h4>Ready to Master Economics and BST?</h4>
+                    <p>Join Udit Bhaiya and start learning Economics and BST the smart way.</p>
+                    <a href="#contact" class="btn btn-primary">👉 Enroll Now</a>
+                </div>
+
+                <p class="tagline">"Turning Economics and BST from Confusing to Crystal Clear."</p>
             </div>
         </div>
     </section>
 
     <!-- Top Results Section -->
     <section id="results" class="results">
-        <!-- Study-themed Background Animations (Same as About Us) -->
-        <div class="study-animations">
-            <div class="floating-book book-1"><i class="fas fa-book"></i></div>
-            <div class="floating-book book-2"><i class="fas fa-book-open"></i></div>
-            <div class="floating-book book-3"><i class="fas fa-book-reader"></i></div>
-            <div class="floating-chart chart-1"><i class="fas fa-chart-line"></i></div>
-            <div class="floating-chart chart-2"><i class="fas fa-chart-bar"></i></div>
-            <div class="floating-chart chart-3"><i class="fas fa-chart-pie"></i></div>
-            <div class="floating-graph graph-1">
-                <svg viewBox="0 0 100 60" class="graph-svg">
-                    <polyline points="10,50 25,40 40,30 55,20 70,15 85,10" fill="none" stroke="currentColor" stroke-width="2"/>
-                    <circle cx="10" cy="50" r="2" fill="currentColor"/>
-                    <circle cx="25" cy="40" r="2" fill="currentColor"/>
-                    <circle cx="40" cy="30" r="2" fill="currentColor"/>
-                    <circle cx="55" cy="20" r="2" fill="currentColor"/>
-                    <circle cx="70" cy="15" r="2" fill="currentColor"/>
-                    <circle cx="85" cy="10" r="2" fill="currentColor"/>
-                </svg>
-            </div>
-            <div class="floating-graph graph-2">
-                <svg viewBox="0 0 100 60" class="graph-svg">
-                    <rect x="10" y="40" width="15" height="20" fill="currentColor" opacity="0.7"/>
-                    <rect x="30" y="30" width="15" height="30" fill="currentColor" opacity="0.7"/>
-                    <rect x="50" y="20" width="15" height="40" fill="currentColor" opacity="0.7"/>
-                    <rect x="70" y="15" width="15" height="45" fill="currentColor" opacity="0.7"/>
-                </svg>
-            </div>
-            <div class="floating-equation eq-1">y = f(x)</div>
-            <div class="floating-equation eq-2">GDP ↑</div>
-            <div class="floating-equation eq-3">P = MC</div>
-            <div class="floating-icon-study icon-1"><i class="fas fa-lightbulb"></i></div>
-            <div class="floating-icon-study icon-2"><i class="fas fa-graduation-cap"></i></div>
-            <div class="floating-icon-study icon-3"><i class="fas fa-pencil-alt"></i></div>
-            <div class="floating-icon-study icon-4"><i class="fas fa-coins"></i></div>
-            <div class="floating-icon-study icon-5"><i class="fas fa-globe"></i></div>
-            <div class="floating-icon-study icon-6"><i class="fas fa-trending-up"></i></div>
-            <div class="study-particle particle-1"></div>
-            <div class="study-particle particle-2"></div>
-            <div class="study-particle particle-3"></div>
-            <div class="study-particle particle-4"></div>
-            <div class="study-particle particle-5"></div>
-            <div class="study-particle particle-6"></div>
-            <div class="study-line line-1"></div>
-            <div class="study-line line-2"></div>
-            <div class="study-line line-3"></div>
-        </div>
         <div class="container">
             <h2 class="section-title">Top Results</h2>
             <p class="section-subtitle">Celebrating our students' outstanding achievements in Economics and BST</p>
@@ -206,7 +242,7 @@
                         </div>
                     </div>
                     <div class="year-image-container">
-                        <img src="images/results/2025.jpeg" alt="Top Results 2025" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <img src="images/results/2025.jpeg" alt="Top Results 2025" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                         <div class="image-placeholder" style="display: none;">
                             <i class="fas fa-image"></i>
                             <p>Add your image:<br>images/results/results-2025.jpg</p>
@@ -222,7 +258,7 @@
                         </div>
                     </div>
                     <div class="year-image-container">
-                        <img src="images/results/2024.png" alt="Top Results 2024" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <img src="images/results/2024.png" alt="Top Results 2024" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                         <div class="image-placeholder" style="display: none;">
                             <i class="fas fa-image"></i>
                             <p>Add your image:<br>images/results/results-2024.jpg</p>
@@ -457,113 +493,91 @@
             <div class="testimonials-slider-container">
                 <div class="testimonials-slider-wrapper">
                     <div class="testimonials-slider">
+
                         <div class="testimonial-card active">
                             <div class="testimonial-content">
-                                <div class="quote-icon">
-                                    <i class="fas fa-quote-left"></i>
+                                <div class="testimonial-stars">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                                 </div>
+                                <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
                                 <p class="testimonial-text">Sir ka teaching style bahut accha hai. Pehle mujhe Economics and BST samajh nahi aa raha tha, but ab sab clear hai. Notes bhi bahut helpful hain aur sir har doubt clear karte hain. Main recommend karta hoon.</p>
                             </div>
                             <div class="testimonial-author">
-                                <div class="author-avatar">
-                                    <i class="fas fa-user"></i>
-                                </div>
-                                <div class="author-info">
-                                    <h4>Rahul Sharma</h4>
-                                    <p>12th Economics Student</p>
-                                </div>
+                                <div class="author-avatar"><i class="fas fa-user"></i></div>
+                                <div class="author-info"><h4>Rahul Sharma</h4><p>12th Economics Student</p></div>
                             </div>
                         </div>
 
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <div class="quote-icon">
-                            <i class="fas fa-quote-left"></i>
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                <div class="testimonial-stars">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                                <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                                <p class="testimonial-text">Udit Bhaiya ne meri Economics and BST ki understanding ko completely change kar diya. Unka way of teaching simple hai aur examples se samjhana bahut accha hai. Board exam mein 92% aaye, all thanks to sir.</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-avatar"><i class="fas fa-user"></i></div>
+                                <div class="author-info"><h4>Priya Verma</h4><p>12th Economics Student</p></div>
+                            </div>
                         </div>
-                        <p class="testimonial-text">Udit Bhaiya ne meri Economics and BST ki understanding ko completely change kar diya. Unka way of teaching simple hai aur examples se samjhana bahut accha hai. Board exam mein 92% aaye, all thanks to sir.</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div class="author-info">
-                            <h4>Priya Verma</h4>
-                            <p>12th Economics Student</p>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <div class="quote-icon">
-                            <i class="fas fa-quote-left"></i>
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                <div class="testimonial-stars">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                                <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                                <p class="testimonial-text">Best teacher hai sir. Class mein jo padhate hain woh bahut clear hota hai. Online classes bhi same quality ki hain. Doubt puchne mein koi problem nahi hoti, sir always ready rehte hain help karne ke liye.</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-avatar"><i class="fas fa-user"></i></div>
+                                <div class="author-info"><h4>Aman Kumar</h4><p>11th Economics Student</p></div>
+                            </div>
                         </div>
-                        <p class="testimonial-text">Best teacher hai sir. Class mein jo padhate hain woh bahut clear hota hai. Online classes bhi same quality ki hain. Doubt puchne mein koi problem nahi hoti, sir always ready rehte hain help karne ke liye.</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div class="author-info">
-                            <h4>Aman Kumar</h4>
-                            <p>11th Economics Student</p>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <div class="quote-icon">
-                            <i class="fas fa-quote-left"></i>
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                <div class="testimonial-stars">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                                <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                                <p class="testimonial-text">Maine 11th se yahan padhna start kiya. Sir ka explanation bahut detailed hai aur har topic ko step by step samjhate hain. Practice questions bhi dete hain jo exam ke liye helpful hain. Highly recommended!</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-avatar"><i class="fas fa-user"></i></div>
+                                <div class="author-info"><h4>Kavya Singh</h4><p>11th Economics Student</p></div>
+                            </div>
                         </div>
-                        <p class="testimonial-text">Maine 11th se yahan padhna start kiya. Sir ka explanation bahut detailed hai aur har topic ko step by step samjhate hain. Practice questions bhi dete hain jo exam ke liye helpful hain. Highly recommended!</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div class="author-info">
-                            <h4>Kavya Singh</h4>
-                            <p>11th Economics Student</p>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <div class="quote-icon">
-                            <i class="fas fa-quote-left"></i>
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                <div class="testimonial-stars">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                                <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                                <p class="testimonial-text">Sir ne Economics and BST ko interesting banaya. Pehle lagta tha ki yeh subject boring hai, but ab pasand hai. Concepts clear hain aur revision material bhi milta hai. Thank you sir for your guidance.</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-avatar"><i class="fas fa-user"></i></div>
+                                <div class="author-info"><h4>Vikash Yadav</h4><p>12th BST Student</p></div>
+                            </div>
                         </div>
-                        <p class="testimonial-text">Sir ne Economics and BST ko interesting banaya. Pehle lagta tha ki yeh subject boring hai, but ab pasand hai. Concepts clear hain aur revision material bhi milta hai. Thank you sir for your guidance.</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div class="author-info">
-                            <h4>Vikash Yadav</h4>
-                            <p>12th BST Student</p>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <div class="quote-icon">
-                            <i class="fas fa-quote-left"></i>
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                <div class="testimonial-stars">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                                <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                                <p class="testimonial-text">Mere parents ne mujhe yahan admission diya tha. Ab main samajh gaya ki kyun. Sir ka teaching method bahut effective hai. Class mein attention deta hoon to sab samajh aa jata hai. Great experience!</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-avatar"><i class="fas fa-user"></i></div>
+                                <div class="author-info"><h4>Anjali Patel</h4><p>11th BST Student</p></div>
+                            </div>
                         </div>
-                        <p class="testimonial-text">Mere parents ne mujhe yahan admission diya tha. Ab main samajh gaya ki kyun. Sir ka teaching method bahut effective hai. Class mein attention deta hoon to sab samajh aa jata hai. Great experience!</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div class="author-info">
-                            <h4>Anjali Patel</h4>
-                            <p>11th BST Student</p>
-                        </div>
-                    </div>
-                </div>
+
                     </div>
                 </div>
                 <!-- Navigation Dots -->
@@ -578,47 +592,46 @@
             <h2 class="section-title">Get In Touch</h2>
             <p class="section-subtitle">We'd love to hear from you. Contact us for Economics and BST tuition inquiries.</p>
             <div class="contact-content">
+
+                <!-- Left: Info Panel -->
                 <div class="contact-info">
+                    <div>
+                        <p class="contact-info-heading">Let's Connect</p>
+                        <p class="contact-info-sub">Reach out and we'll get back to you as soon as possible.</p>
+                    </div>
                     <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
+                        <div class="contact-icon"><i class="fas fa-phone"></i></div>
                         <div class="contact-details">
                             <h3>Phone</h3>
-                            <p><a href="tel:+919084514455" style="color: var(--primary-color); text-decoration: none;">+91 90845 14455</a></p>
+                            <p><a href="tel:+919084514455">+91 90845 14455</a></p>
                         </div>
                     </div>
                     <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fab fa-whatsapp"></i>
-                        </div>
+                        <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
                         <div class="contact-details">
                             <h3>WhatsApp</h3>
-                            <a href="https://wa.me/919084514455" class="whatsapp-btn" target="_blank">
+                            <a href="https://wa.me/919084514455" class="whatsapp-btn" target="_blank" rel="noopener">
                                 <i class="fab fa-whatsapp"></i> Message on WhatsApp
                             </a>
                         </div>
                     </div>
                     <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
                         <div class="contact-details">
                             <h3>Email</h3>
-                            <p><a href="mailto:uditwadhwabhaiya@gmail.com" style="color: var(--primary-color); text-decoration: none;">uditwadhwabhaiya@gmail.com</a></p>
+                            <p><a href="mailto:uditwadhwabhaiya@gmail.com">uditwadhwabhaiya@gmail.com</a></p>
                         </div>
                     </div>
                     <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
+                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
                         <div class="contact-details">
                             <h3>Address</h3>
-                            <p><a href="https://www.google.com/maps?q=29.4818889,77.71575" target="_blank" style="color: var(--primary-color); text-decoration: none;">Lane no 11, Udit Bhaiya,<br>Near Chakh Road, Muzaffarnagar,<br>Uttar Pradesh, 251001</a></p>
+                            <p><a href="https://www.google.com/maps?q=29.4818889,77.71575" target="_blank" rel="noopener">Lane no 11, Udit Bhaiya,<br>Near Chakh Road, Muzaffarnagar,<br>Uttar Pradesh, 251001</a></p>
                         </div>
                     </div>
                 </div>
 
+                <!-- Right: Form -->
                 <div class="contact-form-wrapper">
                     <form class="contact-form" id="contactForm">
                         <div class="form-group">
@@ -631,7 +644,7 @@
                             <input type="email" id="email" name="email" placeholder="Email Address" required>
                         </div>
                         <div class="form-group">
-                            <label for="courses" style="display: block; margin-bottom: 0.8rem; font-weight: 600; color: var(--text-dark);">Select Courses (Multiple)</label>
+                            <label for="courses">Select Courses (Multiple)</label>
                             <div class="custom-select-wrapper">
                                 <div class="custom-select" id="customSelect">
                                     <div class="custom-select-trigger">
@@ -679,10 +692,11 @@
                         <div class="form-group">
                             <textarea id="address" name="address" rows="3" placeholder="Address" required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+                        <button type="submit" class="btn btn-primary btn-block"><span>Send Message</span></button>
                         <div id="formMessage" class="form-message"></div>
                     </form>
                 </div>
+
             </div>
         </div>
     </section>
@@ -692,10 +706,15 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <div class="logo">
-                        <i class="fas fa-chart-line"></i>
-                        <span>UDIT BHAIYA</span>
-                    </div>
+                    <a href="#about" class="logo">
+                        <div class="logo-mark">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="logo-text">
+                            <span class="logo-name">UDIT BHAIYA</span>
+                            <span class="logo-sub">Economics &amp; BST</span>
+                        </div>
+                    </a>
                     <p>Dedicated to helping students excel in Economics and BST and achieve their academic goals.</p>
                     <div class="social-links">
                         <a href="https://www.instagram.com/uditbhaiya_?igsh=M2s2dzBoZ2p4aWJx&utm_source=qr" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
