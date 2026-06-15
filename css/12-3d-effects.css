@@ -42,8 +42,8 @@
     position: absolute;
     width: 50px;
     height: 50px;
-    border: 2px solid rgba(99, 102, 241, 0.55);
-    background: rgba(99, 102, 241, 0.06);
+    border: 2px solid rgba(29, 78, 216, 0.55);
+    background: rgba(29, 78, 216, 0.06);
 }
 
 .cube-front  { transform: translateZ(25px); }

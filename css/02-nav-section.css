@@ -51,13 +51,13 @@
     color: white;
     font-size: 1.15rem;
     flex-shrink: 0;
-    box-shadow: 0 4px 14px rgba(124,58,237,.45);
+    box-shadow: 0 4px 14px rgba(11,45,110,.45);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .logo:hover .logo-mark {
     transform: rotate(-6deg) scale(1.08);
-    box-shadow: 0 6px 20px rgba(124,58,237,.6);
+    box-shadow: 0 6px 20px rgba(11,45,110,.6);
 }
 
 /* Two-line text stack */
@@ -196,7 +196,7 @@ section {
     height: 4px;
     background: var(--gradient-modern);
     border-radius: 4px;
-    box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);
+    box-shadow: 0 4px 15px rgba(15, 118, 110, 0.4);
 }
 
 .section-subtitle {

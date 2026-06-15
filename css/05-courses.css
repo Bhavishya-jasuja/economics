@@ -1,6 +1,6 @@
 /* ── Courses / Batches Section ─────────────────────── */
 .courses {
-    background: linear-gradient(160deg, #F8FAFC 0%, #EEF2FF 60%, #F0F9FF 100%);
+    background: linear-gradient(160deg, #FFFFFF 0%, #EFF6FF 60%, #FFFFFF 100%);
     position: relative;
     overflow: hidden;
 }
@@ -12,7 +12,7 @@
     right: -160px;
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, rgba(124,58,237,.12) 0%, rgba(14,165,233,.06) 50%, transparent 70%);
+    background: radial-gradient(circle, rgba(11,45,110,.12) 0%, rgba(217,119,6,.06) 50%, transparent 70%);
     border-radius: 50%;
     filter: blur(60px);
     pointer-events: none;
@@ -25,7 +25,7 @@
     left: -120px;
     width: 420px;
     height: 420px;
-    background: radial-gradient(circle, rgba(14,165,233,.1) 0%, rgba(124,58,237,.05) 50%, transparent 70%);
+    background: radial-gradient(circle, rgba(217,119,6,.1) 0%, rgba(11,45,110,.05) 50%, transparent 70%);
     border-radius: 50%;
     filter: blur(60px);
     pointer-events: none;
@@ -52,7 +52,7 @@
     border-radius: 50px;
     margin-bottom: 1.5rem;
     letter-spacing: 0.2px;
-    box-shadow: 0 4px 16px rgba(124,58,237,.35);
+    box-shadow: 0 4px 16px rgba(11,45,110,.35);
 }
 
 .batch-title::before {
@@ -92,7 +92,7 @@
     border: 1px solid rgba(255,255,255,0.6);
     box-shadow:
         0 4px 6px rgba(0,0,0,.04),
-        0 12px 32px rgba(124,58,237,.08),
+        0 12px 32px rgba(11,45,110,.08),
         inset 0 1px 0 rgba(255,255,255,.8);
     transition: transform 0.35s cubic-bezier(0.23,1,0.32,1),
                 box-shadow 0.35s ease;
@@ -140,7 +140,7 @@
     margin: 0 auto 1.1rem;
     font-size: 1.6rem;
     color: white;
-    box-shadow: 0 8px 24px rgba(124,58,237,.35);
+    box-shadow: 0 8px 24px rgba(11,45,110,.35);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     z-index: 1;
@@ -148,7 +148,7 @@
 
 .course-card:hover .course-icon {
     transform: scale(1.1) rotate(6deg);
-    box-shadow: 0 12px 32px rgba(124,58,237,.5);
+    box-shadow: 0 12px 32px rgba(11,45,110,.5);
 }
 
 /* ── Card Text ─────────────────────────────────────── */
@@ -193,7 +193,7 @@
     padding: 0.55rem 0;
     font-size: 0.88rem;
     color: var(--text-mid);
-    border-bottom: 1px solid rgba(124,58,237,.07);
+    border-bottom: 1px solid rgba(11,45,110,.07);
     line-height: 1.45;
 }
 

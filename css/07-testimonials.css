@@ -1,6 +1,6 @@
 /* ── Testimonials Section ──────────────────────────── */
 .testimonials {
-    background: linear-gradient(135deg, #0A0720 0%, #150D3A 50%, #0C1854 100%);
+    background: linear-gradient(135deg, #060D20 0%, #0A1A40 50%, #0B2255 100%);
     position: relative;
     overflow: hidden;
 }
@@ -11,7 +11,7 @@
     position: absolute;
     top: -200px; left: -200px;
     width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(124,58,237,.25) 0%, transparent 65%);
+    background: radial-gradient(circle, rgba(11,45,110,.25) 0%, transparent 65%);
     border-radius: 50%;
     filter: blur(60px);
     pointer-events: none;
@@ -22,7 +22,7 @@
     position: absolute;
     bottom: -200px; right: -200px;
     width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(14,165,233,.2) 0%, transparent 65%);
+    background: radial-gradient(circle, rgba(217,119,6,.2) 0%, transparent 65%);
     border-radius: 50%;
     filter: blur(60px);
     pointer-events: none;
@@ -133,7 +133,7 @@
     color: white;
     font-size: 1.2rem;
     flex-shrink: 0;
-    box-shadow: 0 4px 16px rgba(124,58,237,.4);
+    box-shadow: 0 4px 16px rgba(11,45,110,.4);
 }
 
 .author-info h4 {

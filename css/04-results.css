@@ -12,7 +12,7 @@
     position: absolute;
     top: -100px; right: -100px;
     width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(124,58,237,.12) 0%, rgba(168,85,247,.06) 50%, transparent 70%);
+    background: radial-gradient(circle, rgba(11,45,110,.12) 0%, rgba(59,130,246,.06) 50%, transparent 70%);
     border-radius: 50%;
     filter: blur(60px);
     pointer-events: none;
@@ -23,7 +23,7 @@
     position: absolute;
     bottom: -150px; left: -150px;
     width: 700px; height: 700px;
-    background: radial-gradient(circle, rgba(14,165,233,.1) 0%, rgba(124,58,237,.06) 50%, transparent 70%);
+    background: radial-gradient(circle, rgba(217,119,6,.1) 0%, rgba(11,45,110,.06) 50%, transparent 70%);
     border-radius: 50%;
     filter: blur(80px);
     pointer-events: none;
@@ -55,7 +55,7 @@
     border: 1px solid rgba(255,255,255,0.6);
     box-shadow:
         0 4px 6px rgba(0,0,0,.04),
-        0 16px 40px rgba(124,58,237,.1),
+        0 16px 40px rgba(11,45,110,.1),
         inset 0 1px 0 rgba(255,255,255,.8);
     transition: transform 0.4s cubic-bezier(0.23,1,0.32,1), box-shadow 0.4s ease;
     position: relative;
@@ -83,8 +83,8 @@
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem 2rem;
-    background: linear-gradient(135deg, rgba(124,58,237,.05) 0%, rgba(14,165,233,.05) 100%);
-    border-bottom: 1px solid rgba(124,58,237,.1);
+    background: linear-gradient(135deg, rgba(11,45,110,.05) 0%, rgba(217,119,6,.05) 100%);
+    border-bottom: 1px solid rgba(11,45,110,.1);
     position: relative;
     z-index: 1;
 }
@@ -110,13 +110,13 @@
     justify-content: center;
     color: white;
     font-size: 1.4rem;
-    box-shadow: 0 4px 16px rgba(124,58,237,.4);
+    box-shadow: 0 4px 16px rgba(11,45,110,.4);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .year-card:hover .year-badge {
     transform: scale(1.12) rotate(10deg);
-    box-shadow: 0 8px 24px rgba(124,58,237,.6);
+    box-shadow: 0 8px 24px rgba(11,45,110,.6);
 }
 
 /* ── Image Container ───────────────────────────────── */
@@ -149,7 +149,7 @@
     align-items: center;
     justify-content: center;
     color: var(--text-light);
-    background: linear-gradient(135deg, rgba(124,58,237,.05) 0%, rgba(14,165,233,.05) 100%);
+    background: linear-gradient(135deg, rgba(11,45,110,.05) 0%, rgba(217,119,6,.05) 100%);
 }
 
 .year-image-container .image-placeholder p {
